@@ -1,0 +1,58 @@
+spring:
+    datasource:
+        url: jdbc:postgresql://localhost:5432/spring-security-oauth2
+        username: postgres
+        password: 123456
+
+    jpa:
+        show-sql: true
+        hibernate:
+            ddl-auto: update
+            naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect      
+
+
+
+
+     
+                             
+    security:
+      oauth2:
+        client:
+          registration:
+            google:
+              clientId: 229586670094-evrmoaqrivn8u12ch9mph0hiqqnamvq4.apps.googleusercontent.com
+              clientSecret: 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
+              redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+              scope:
+                - email
+                - profile
+
+
+
+                
+                
+app:
+  auth:
+      jwtSecret: biricikbiricik
+      jwtExpirationMs: 900000
+      jwtRefreshExpirationMs: 86400000 
+      
+    
+    
+ 
+  cors:
+    allowedOrigins: http://localhost:3000,http://localhost:8080
+  oauth2:
+    # After successfully authenticating with the OAuth2 Provider,
+    # we'll be generating an auth token for the user and sending the token to the
+    # redirectUri mentioned by the client in the /oauth2/authorize request.
+    # We're not using cookies because they won't work well in mobile clients.
+    authorizedRedirectUris:
+      - http://localhost:3000/oauth2/redirect
+      - myandroidapp://oauth2/redirect
+      - myiosapp://oauth2/redirect
+      
+      
